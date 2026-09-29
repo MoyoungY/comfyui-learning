@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SD1.5 wiring checklist</title><link rel="stylesheet" href="../assets/course.css"></head><body><main><p class="eyebrow">Reference 03</p><h1>SD1.5: nine connections</h1><pre>Load Checkpoint.MODEL → KSampler.model
+Load Checkpoint.CLIP → first text encoder.clip
+Load Checkpoint.CLIP → second text encoder.clip
+First encoder.CONDITIONING → KSampler.positive
+Second encoder.CONDITIONING → KSampler.negative
+Empty Latent Image.LATENT → KSampler.latent_image
+KSampler.LATENT → VAE Decode.samples
+Load Checkpoint.VAE → VAE Decode.vae
+VAE Decode.IMAGE → Save Image.images</pre><p>Choose the checkpoint and provide prompts and sampling settings before execution. For this exercise use Empty Latent Image at 512 × 512, batch size 1.</p><p><a href="../lessons/0003-complete-the-inputs.html">Lesson and checkpoint</a> · <a href="https://docs.comfy.org/tutorials/basic/text-to-image">Official example</a></p></main></body></html>

@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ComfyUI · Data-flow reference</title><link rel="stylesheet" href="../assets/course.css"></head><body><main>
+<p class="eyebrow">Reference 01 / Introduced terms</p><h1>Follow the data</h1><p><a href="../lessons/0001-read-a-workflow.html">Return to lesson 01 and its understanding check</a></p>
+<table><thead><tr><th>Term</th><th>Meaning in this lesson</th></tr></thead><tbody><tr><td>Node</td><td>An operation with inputs and outputs.</td></tr><tr><td>Link</td><td>A connection passing data between ports.</td></tr><tr><td>LATENT</td><td>Latent-space data, distinct from displayable pixels.</td></tr><tr><td>IMAGE</td><td>Pixel image data.</td></tr><tr><td>VAE</td><td>The model used here to decode latent data.</td></tr></tbody></table>
+<p>Terminology sources: <a href="https://docs.comfy.org/basic-concepts/nodes">Nodes</a> and <a href="https://docs.comfy.org/tutorials/basic/text-to-image">Text to Image</a>.</p>
+<pre>KSampler → LATENT → VAE Decode → IMAGE → Save Image
+                         ↑
+                  VAE model input</pre>
+<p><a href="https://github.com/Comfy-Org/ComfyUI/blob/master/nodes.py">Core node signatures</a> specify this conversion.</p>
+<h2>A connection debugging habit</h2><ol><li>Read the producing port's type.</li><li>Read the receiving port's required type.</li><li>If different, identify the intended conversion.</li><li>Check the converter's other required inputs.</li></ol>
+<p>Matching type labels are an initial check; they do not prove that every model combination is compatible.</p>
+<footer>Scope: standard Stable Diffusion output stage. These terms have been introduced; mastery awaits the lesson checkpoint. Checked 2026-09-29.</footer></main></body></html>

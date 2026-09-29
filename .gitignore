@@ -1,0 +1,155 @@
+# Codex + Teach course repository — Windows / macOS
+# Keep course content, workflows, reference material and reusable skills in Git.
+# Intentionally tracked: AGENTS.md, .agents/skills/, skills-lock.json,
+# MISSION.md, NOTES.md, GLOSSARY.md, RESOURCES.md, learning-records/,
+# lessons/, reference/, assets/, pyproject.toml, uv.lock, .python-version.
+# Do not blanket-ignore .agents/, .codex/, JSON, HTML, images or lockfiles.
+
+# ── Windows ────────────────────────────────────────────────────────────
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.stackdump
+
+# ── macOS ──────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble/
+.LSOverride
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.TemporaryItems/
+.DocumentRevisions-V100/
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.apdisk
+
+# ── Editor state and temporary files ───────────────────────────────────
+# Share portable VS Code settings; review paths before committing them.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/*.code-snippets
+.vscode/settings.local.json
+.history/
+.idea/
+*.sublime-workspace
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+~$*
+.~lock.*#
+*.orig
+*.rej
+
+# ── Secrets and machine-specific overrides ─────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+!.env.*.example
+!.env.*.sample
+!.env.*.template
+.envrc.local
+.secrets/
+.ssh/
+*.key
+*.pem
+*.p12
+*.pfx
+/.local/
+
+# ── Codex local state (when stored inside this repository) ──────────────
+# Keep shared .codex/config.toml, rules and other project instructions.
+# Keep secrets out of shared config; gitignore does not redact file contents.
+.codex/auth.json
+.codex/config.local.toml
+.codex/history.jsonl
+.codex/sessions/
+.codex/archived_sessions/
+.codex/log/
+.codex/logs/
+.codex/tmp/
+.codex/cache/
+.codex/shell_snapshots/
+.codex/*.sqlite
+.codex/*.sqlite-*
+.codex/*.db
+.codex/*.db-*
+.codex/models_cache.json
+.codex/version.json
+
+# ── Python / uv ────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+__pypackages__/
+.uv-cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.pyre/
+.tox/
+.nox/
+.hypothesis/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+
+# ── JavaScript tooling / generated builds ──────────────────────────────
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.yarn/build-state.yml
+.pnp.*
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
+*.tsbuildinfo
+/build/
+/dist/
+/coverage/
+
+# ── Logs and scratch data ──────────────────────────────────────────────
+*.log
+.cache/
+/tmp/
+/temp/
+
+# ── Local ComfyUI installation / large runtime data ─────────────────────
+# Scoped to runtime locations: assets/ and course examples remain tracked.
+/ComfyUI/
+/comfyui/
+/ComfyUI_windows_portable/
+/setup/remote-uv/ComfyUI/
+/models/
+/input/
+/output/
+/outputs/
+/extra_model_paths.yaml
+# Keep extra_model_paths.yaml.example and workflow JSON in Git.
+# Store selected generated examples under assets/ when they belong in lessons.

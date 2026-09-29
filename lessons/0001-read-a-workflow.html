@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>01 · Read a workflow by its data</title><link rel="stylesheet" href="../assets/course.css"></head>
+<body><main><nav><a href="../reference/0001-data-flow.html">Quick reference</a> · <a href="../MISSION.md">Course mission</a></nav>
+<p class="eyebrow">ComfyUI / Lesson 01 / 5–8 minutes / No installation required</p>
+<h1>Read a workflow by its data</h1><p class="lede">Your first win: explain one broken connection before running anything.</p>
+<h2>1. Concept — think function calls</h2>
+<p>A node performs an operation. Its input and output ports specify data types; a link supplies one node's output to another's input. In Python terms, read a node as a function call and a wire as a passed value. <a href="https://docs.comfy.org/basic-concepts/nodes">Source: official Nodes guide</a>.</p>
+<p>For the standard Stable Diffusion example, distinguish <strong>LATENT</strong> (a representation in latent space) from <strong>IMAGE</strong> (pixel data). Denoising takes place in latent space; decoding makes the result viewable. <a href="https://docs.comfy.org/tutorials/basic/text-to-image">Source: official text-to-image guide</a>.</p>
+<h2>2. Small workflow — the output stage</h2>
+<pre aria-label="KSampler latent output passes through VAE Decode to become an image for Save Image">KSampler ── LATENT ──▶ VAE Decode ── IMAGE ──▶ Save Image
+                            ▲
+                            │ VAE
+                     Load Checkpoint</pre>
+<p>This is a <em>fragment</em> of the standard workflow. The sampler's model, prompt conditioning, initial latent, and settings are intentionally outside today's exercise. It is not a complete runnable graph.</p>
+<p><code>VAE Decode</code> needs two inputs: <code>samples</code> accepts LATENT, and <code>vae</code> accepts the VAE model used to decode it. Its output is IMAGE. <code>Save Image</code> expects IMAGE at its <code>images</code> input. <a href="https://github.com/Comfy-Org/ComfyUI/blob/master/nodes.py">Source: VAEDecode and SaveImage definitions</a>.</p>
+<aside>The decoder performs a learned transformation. Renaming a port or a node does not perform that transformation.</aside>
+<h2>3. Exercise — retrieve before checking</h2>
+<div class="exercise"><p>Cover the diagram. Write the data type on each arrow:</p><pre>KSampler ── ? ──▶ VAE Decode ── ? ──▶ Save Image</pre><p>Then explain, in one sentence, why the middle node exists.</p></div>
+<details><summary>Check your prediction after answering</summary><p>LATENT, then IMAGE. VAE Decode uses a VAE model to transform the sampled latent into pixel data. If you only recalled node names, try again using the representations in your explanation.</p></details>
+<h2>4. Debugging — repair a broken graph</h2>
+<p>A colleague removes VAE Decode and tries to connect KSampler directly to Save Image. Name the incompatible types, then describe the repair, including the extra input that the restored decoder requires.</p>
+<details><summary>Reveal feedback after proposing a repair</summary><p>The output is LATENT but the destination expects IMAGE. Restore VAE Decode: connect the sampler output to <code>samples</code>, the checkpoint's VAE output to <code>vae</code>, and the decoder output to Save Image's <code>images</code>. Changing the prompt cannot repair an interface mismatch.</p></details>
+<p>If ComfyUI is already available, find these nodes in the official example and trace the three connections. Follow the <a href="https://docs.comfy.org/get_started/first_generation">first-generation guide</a> to load the example if needed. Otherwise, the paper exercise is sufficient for this lesson.</p>
+<h2>5. Recap and checkpoint</h2>
+<p>Read the value flowing through each wire. Identify the transformation required by the next input. This habit will help you place new operations deliberately when we reach illustration and comics workflows.</p>
+<p><strong>Reply to your teacher:</strong></p><ol><li>Why can’t Save Image use KSampler’s output directly?</li><li>What two inputs does VAE Decode need, and what does each provide?</li><li>If you move Save Image to the left of KSampler without changing any wires, has the data dependency changed? Explain.</li></ol>
+<p>We will review your answers before the next topic. Ask the agent any follow-up questions; uncertainty is useful evidence for choosing the next exercise.</p>
+<footer>Recommended primary reading: <a href="https://docs.comfy.org/basic-concepts/nodes">Nodes — “Nodes perform operations” and “Connections Between Nodes”</a>. Read just those sections today. <a href="../reference/0001-data-flow.html">Keep the one-page reference</a>. Sources checked 2026-09-29.</footer>
+</main></body></html>
