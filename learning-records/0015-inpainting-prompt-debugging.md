@@ -1,0 +1,3 @@
+# Focused prompt produced flowers in a working masked edit
+
+After the first inpainting run produced no flowers, the user confirmed a white patch in the mask preview and reported that the corresponding background area had changed. They then reported flowers appearing after replacing the whole-scene positive prompt with a focused description of yellow wildflowers, following instructions to keep the original input, mask, seed, and sampler settings unchanged. This supports successful masked generation and a useful prompt refinement for this example; exact settings, boundary quality, and preservation of the fox in the final run were not independently verified.

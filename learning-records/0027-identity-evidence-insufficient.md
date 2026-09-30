@@ -1,0 +1,3 @@
+# Comparison established structure, not character identity
+
+The user clarified that the two supposedly identifying details were the fox's pose and the tree's shape, then reported that the fox is mostly white with few visible details and only its shape appears similar. This supersedes LR-0026's interpretation of identity preservation: pixel-art style and structural similarity were reported, while identity is not assessable from the selected features. Next define one visible character attribute, such as a blue scarf, and test whether it can be generated before assessing its persistence; no identity-control success is established.

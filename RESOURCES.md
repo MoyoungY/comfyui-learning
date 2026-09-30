@@ -4,6 +4,33 @@ Reviewed 2026-09-29. Recheck implementation-sensitive details when teaching them
 
 ## Knowledge
 
+- [Apply ControlNet Advanced](https://docs.comfy.org/built-in-nodes/ControlNetApplyAdvanced)
+  Positive/negative conditioning ports, control model and image inputs, strength and active interval. Reviewed 2026-09-30 for lesson 0012.
+
+- [Built-in Canny node](https://docs.comfy.org/built-in-nodes/Canny)
+  IMAGE input/output, threshold ranges and defaults (0.4/0.8), edge preview troubleshooting. Reviewed 2026-09-30 for lesson 0011; current official documentation, pinned source fetch unavailable.
+
+- [ControlNet v1.1 SD1.5 Canny model card](https://huggingface.co/lllyasviel/control_v11p_sd15_canny)
+  Original model family and expected Canny-edge conditioning. [ComfyUI maintainer FP16 file](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_canny_fp16.safetensors): 723 MB and published SHA256. Selected for introductory SD1.5 exercise, reviewed 2026-09-30.
+
+- [Maintainer ControlNet examples](https://github.com/comfyanonymous/ComfyUI_examples/blob/master/controlnet/README.md)
+  Control images must match the ControlNet type; application does not automatically extract edges/depth. Model directory and model sources. Reviewed 2026-09-30 for lesson 0010.
+
+- [PixelArtRedmond SD1.5 model card](https://huggingface.co/artificialguybr/pixelartredmond-1-5v-pixel-art-loras-for-sd-1-5)
+  Creator's SD1.5 adapter and trigger words “pixel art, PixArFK”; selected for introductory style comparison, reviewed 2026-09-30. [File and published SHA256](https://huggingface.co/artificialguybr/pixelartredmond-1-5v-pixel-art-loras-for-sd-1-5/blob/main/PixelArtRedmond15V-PixelArt-PIXARFK.safetensors). Creator reports training on Liberte, an SD1.5 variant; results with the learner's vanilla checkpoint remain untested.
+
+- [Official guide: LoRA](https://docs.comfy.org/tutorials/basic/lora)
+  Load LoRA ports, installation directory, and model/CLIP strength controls; reviewed 2026-09-30 for lesson 0009. Choose the actual adapter only after checking its base-model compatibility and creator instructions.
+
+- [Official guide: Inpainting](https://docs.comfy.org/tutorials/basic/inpaint)
+  Mask editor, VAE Encode (for Inpainting), and comparison of general SD1.5 versus specialized inpainting models. Reviewed 2026-09-30 for lesson 0008.
+
+- [Official guide: Image to Image](https://docs.comfy.org/tutorials/basic/image-to-image)
+  Input-image workflow and denoise comparison for lesson 0007. Reviewed 2026-09-30; use pinned nodes.py for VAE Encode port types and avoid treating the guide’s simplified full-noise analogy as exact implementation detail.
+
+- [Classifier-Free Diffusion Guidance — Ho and Salimans](https://arxiv.org/abs/2207.12598)
+  Primary research on guidance strength and the tradeoff between sample fidelity and diversity; introduced for lesson 0006. Reviewed 2026-09-30.
+
 - [Comfy-Org SD1.5 FP16 checkpoint](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/blob/main/v1-5-pruned-emaonly-fp16.safetensors)
   Official introductory checkpoint download, file size, and published SHA256; selected for first basic workflow.
 

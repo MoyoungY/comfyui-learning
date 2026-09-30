@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ControlNet wiring</title><link rel="stylesheet" href="../assets/course.css"></head><body><main><p class="eyebrow">Reference 12</p><h1>ControlNet conditioning branch</h1><pre>Positive encoder → Apply ControlNet (Advanced).positive
+Negative encoder → Apply ControlNet (Advanced).negative
+ControlNet loader → Apply ControlNet (Advanced).control_net
+Canny edge IMAGE → Apply ControlNet (Advanced).image
+Apply.positive → KSampler.positive
+Apply.negative → KSampler.negative</pre><p>Apply outputs CONDITIONING. Canny outputs IMAGE. The loader outputs CONTROL_NET.</p><p>For this exercise keep Empty Latent Image feeding the sampler, direct checkpoint MODEL/CLIP connections, and the original decoder/saver branch. Use start_percent 0, end_percent 1; compare strength 0 versus 0.8 with all other inputs fixed.</p><p>If control seems absent, check that the sampler receives Apply’s outputs rather than the original text-encoder outputs, and preview the Canny image.</p><p><a href="../lessons/0012-connect-controlnet.html">Lesson 12</a> · <a href="https://docs.comfy.org/built-in-nodes/ControlNetApplyAdvanced">Official node documentation</a></p></main></body></html>
